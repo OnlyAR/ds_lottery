@@ -1,0 +1,28 @@
+# MainWindow: 1000 x 600
+
+Label main-label
+    geometry=350 100 300 100
+    style=main_label
+    align=center
+End
+
+PushButton roll-button
+    geometry=400 300 200 75
+    text=开始抽取
+    style=roll_button
+    enabled=false
+End
+
+Label be-chosen
+    geometry=730 50 240 500
+    style=side_label
+    text=抽中了
+    align=top|left
+End
+
+Label be-chosen
+    geometry=30 50 240 500
+    style=side_label
+    text=候选列表
+    align=top|left
+End

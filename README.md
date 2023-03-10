@@ -22,4 +22,4 @@
 
 ### 图形化版本用法如下：
 
-使用 Python 3.9 以上版本并安装 PyQt6 库，双击 `main_gui.pyw` 即可。
+使用 Python 3.10 及以上版本并安装 PyQt6 库，双击 `main_gui.pyw` 即可。
