@@ -1,17 +1,14 @@
 import random
 import time
 
-import csv_reader
 import writer
 
+from kernel import LotteryBase
 
-class Shell:
+
+class Shell(LotteryBase):
     def __init__(self):
-        self.inter = 0.01
-        print("读取成绩...")
-        self.result = csv_reader.get_result_map("result.csv")
-        print("启动")
-        self.final = {}
+        super().__init__()
         self.show_result()
         self.run()
 
@@ -80,6 +77,6 @@ class Shell:
                 print(user, end="  ")
             print("")
 
+    def show_prompt(self, string, **kwargs):
+        print(string, **kwargs)
 
-if __name__ == '__main__':
-    shell = Shell()
