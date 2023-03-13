@@ -1,3 +1,4 @@
+import sys
 from enum import Enum
 
 from PyQt6.QtCore import Qt, QTimer
@@ -31,7 +32,11 @@ class MainWidget(QMainWindow):
             Qt.TextInteractionFlag.TextBrowserInteraction
         )
 
-        self.shell = Graphic(self)
+        try:
+            self.shell = Graphic(self)
+        except FileNotFoundError:
+            QMessageBox.information(self, "文件无法打开", "找不到 result.csv 文件，请先下载排名！")
+            sys.exit(1)
 
         self.timer = QTimer(self)
         self.timer.setInterval(int(self.shell.inter * 1000))

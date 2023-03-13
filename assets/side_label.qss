@@ -38,16 +38,16 @@ QMenu::item:!enabled {
 
 QScrollBar:vertical
 {
-    background-color: #CFCFCF;
+    background-color: #A1A1A1;
     width:10px;
     border-radius: 15px;
     border: 1px solid transparent
 }
 
 QScrollBar::sub-page:vertical {
-    background: cyan;
+    background: #CFCFCF;
 }
 
 QScrollBar::add-page:vertical {
-    background: #A1A1A1;
+    background: #CFCFCF;
 }
