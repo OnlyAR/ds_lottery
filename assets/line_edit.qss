@@ -1,13 +1,18 @@
-QTextEdit {
-    border-style: dashed;
-    border-width: 2px;
-    border-color: red;
-    border-radius: 15px;
-
+QLineEdit {
+    border: 2px dashed red;
+    border-radius: 5px;
+    padding-left: 5px;
+    background-color: #F0F0F0;
     color: #008080;
+    selection-background-color: #008080;
+    selection-color: #F0F0F0;
     font-family: "Microsoft YaHei";
-    font-size: 15pt;
+    font-size: 10pt;
     font-weight: 700;
+}
+
+QLineEdit::hover {
+    border: 2px solid red;
 }
 
 QMenu {
@@ -34,20 +39,4 @@ QMenu::item:selected {
 QMenu::item:!enabled {
     background-color: #CDCDCD;
 	color: #B4B4B4;
-}
-
-QScrollBar:vertical
-{
-    background-color: #CFCFCF;
-    width:10px;
-    border-radius: 15px;
-    border: 1px solid transparent
-}
-
-QScrollBar::sub-page:vertical {
-    background: cyan;
-}
-
-QScrollBar::add-page:vertical {
-    background: #A1A1A1;
 }

@@ -6,8 +6,9 @@ if not find_pyqt:
     print("没有安装 PyQT6 库，请使用 cli 版本")
     sys.exit(1)
 
-from PyQt6.QtWidgets import QPushButton, QLabel, QComboBox, QLineEdit, QTextEdit
+from PyQt6.QtWidgets import QPushButton, QLabel, QComboBox, QLineEdit, QTextEdit, QSpinBox
 from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QPalette, QColor, QBrush
 
 
 class QtComponent:
@@ -17,6 +18,7 @@ class QtComponent:
         "Combo": QComboBox,
         "LineEdit": QLineEdit,
         "TextEdit": QTextEdit,
+        "SpinBox": QSpinBox,
     }
 
     def __init__(self, parent, file_path):
@@ -42,17 +44,30 @@ class QtComponent:
                     with open(f"./assets/{v}.qss", "r", encoding="utf-8") as f:
                         self.components[key].setStyleSheet(f.read())
                 case "align":
+                    align = 0
                     if "left" in v.split('|'):
-                        self.components[key].setAlignment(Qt.AlignmentFlag.AlignLeft)
+                        align |= Qt.AlignmentFlag.AlignLeft
                     if "center" in v.split('|'):
-                        self.components[key].setAlignment(Qt.AlignmentFlag.AlignCenter)
+                        align |= Qt.AlignmentFlag.AlignCenter
                     if "top" in v.split('|'):
-                        self.components[key].setAlignment(Qt.AlignmentFlag.AlignTop)
+                        align |= Qt.AlignmentFlag.AlignTop
+                    self.components[key].setAlignment(align) if align != 0 else ...
                 case "enabled":
                     if v == "true":
                         self.components[key].setEnabled(True)
                     if v == "false":
                         self.components[key].setEnabled(False)
+                case "transparent":
+                    if fn == "TextEdit" and v == "true":
+                        palette = self.components[key].palette()
+                        palette.setBrush(QPalette.ColorRole.Base, QBrush(QColor(255, 0, 0, 0)))
+                        self.components[key].setPalette(palette)
+                case "holder":
+                    self.components[key].setPlaceholderText(v)
+                case "min":
+                    self.components[key].setMinimum(int(v))
+                case "max":
+                    self.components[key].setMaximum(int(v))
 
     def read_layout(self, f):
         in_component = False

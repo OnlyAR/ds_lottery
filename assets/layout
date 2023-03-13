@@ -8,21 +8,36 @@ End
 
 PushButton roll-button
     geometry=400 300 200 75
-    text=开始抽取
+    text=开始！
     style=roll_button
     enabled=false
 End
 
-Label be-chosen
+TextEdit be-chosen
     geometry=730 50 240 500
     style=side_label
-    text=抽中了
+    text=<h2 style='color:#D02090'>抽中啦 ^_^</h2>
     align=top|left
+    transparent=true
 End
 
-Label be-chosen
+TextEdit to-choose
     geometry=30 50 240 500
     style=side_label
-    text=候选列表
+    text=<h2 style='color:#D02090'>候选列表</h2>
     align=top|left
+    transparent=true
+End
+
+LineEdit object
+    geometry=300 450 300 35
+    holder=<输入要抽取的奖品名>
+    style=line_edit
+End
+
+SpinBox count
+    geometry=610 450 90 35
+    min=1
+    max=255
+    style=spin
 End
